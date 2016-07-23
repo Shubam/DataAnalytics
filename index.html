@@ -1,0 +1,410 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/png" href="assets/img/favicon.ico">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+
+    <title>Teal Labs</title>
+    <link rel="stylesheet" href="odometer-theme-car.css" />
+    <script src="odometer.js"></script>
+    <meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0' name='viewport' />
+    <meta name="viewport" content="width=device-width" />
+    <style type="text/css">
+        body {
+            font-family: 'Source Sans Pro', sans-serif;
+        }
+        .legend {
+            font-size: 12px;
+        }
+        rect {
+            stroke-width: 2;
+        }
+        .incorrect {
+            color: #AEC7E8;
+            font-size: 15px;
+        }
+        .correct {
+            color: #1F77B4;
+            font-size: 15px;
+        }
+        .text {
+            color: #4d4d4d;
+            font-size: 40px;
+            font-weight: 500;
+            line-height: 80px;
+            text-align: left;
+        }
+    </style>
+
+    <!-- Bootstrap core CSS     -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" />
+
+    <!-- Animation library for notifications   -->
+    <link href="assets/css/animate.min.css" rel="stylesheet"/>
+
+    <!--  Light Bootstrap Table core CSS    -->
+    <link href="assets/css/light-bootstrap-dashboard.css" rel="stylesheet"/>
+
+
+    <!--  CSS for Demo Purpose, don't include it in your project     -->
+    <link href="assets/css/demo.css" rel="stylesheet" />
+
+
+    <!--     Fonts and icons     -->
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href='http://fonts.googleapis.com/css?family=Roboto:400,700,300' rel='stylesheet' type='text/css'>
+    <link href="assets/css/pe-icon-7-stroke.css" rel="stylesheet" />
+
+</head>
+<body>
+
+<div class="wrapper">
+    <div class="sidebar" data-image="assets/img/sidebar-4.jpg">
+
+    <!--
+
+        Tip 1: you can change the color of the sidebar using: data-color="blue | azure | green | orange | red | purple"
+        Tip 2: you can also add an image using data-image tag
+
+    -->
+
+        <div class="sidebar-wrapper">
+            <div class="logo">
+                <a href="http://www.teal-labs.com" class="simple-text">
+                    Teal Labs
+                </a>
+            </div>
+
+            <ul class="nav">
+                <li class="active">
+                    <a href="index.html">
+                        <i class="pe-7s-graph"></i>
+                        <p>Class Statistics</p>
+                    </a>
+                </li>
+                 <li>
+                    <a href="students.html">
+                        <i class="pe-7s-user"></i>
+                        <p>Student List</p>
+                    </a>
+                </li>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="main-panel">
+        <nav class="navbar navbar-default navbar-fixed">
+            <div class="container-fluid">
+                <div class="navbar-header">
+                    <a class="navbar-brand" href="#">Dashboard</a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav navbar-right">
+                        <li>
+                           <a href="">
+                               Account
+                            </a>
+                        </li> 
+                        <li>
+                            <a href="#">
+                                Log out
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+
+
+        <div class="content">
+            <div class="container-fluid">
+                <div class="col-md-4">
+                    <div class="row-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Total Attempts</h4> 
+                                <hr> 
+                            </div>
+                            <div class="content">
+                                <div id="TotalAttempts" class="text">
+                                    
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                       <div class="row-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Correct Attempts</h4> 
+                                <hr> 
+                            </div>
+                            <div class="content">
+                            <div id="CorrectAttempts" class="text">
+                                    
+                                </div> 
+                                
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Incorrect Attempts</h4> 
+                                <hr> 
+                            </div>
+                            <div class="content">
+                                <div id="IncorrectAttempts" class="text">
+                                    
+                                </div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Time Spent(In hours)</h4> 
+                                <hr> 
+                                <div class="content">
+                                <div id="Time" class="text">
+
+                                </div>    
+                                </div> 
+                            </div>
+                            
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-8">
+                <div class="row-md-8">
+                    <div class="card">
+                        <div class="header">
+                            <h4 class="title">Total Strength of Students</h4>
+                            <hr> 
+                        </div>
+                        <div class="content">
+
+                            <div id="totalStrength" class = "text"></div>
+                        </div>
+                    </div>
+                </div>
+                 <div class="row-md-8">
+                        <div class="card">
+                            <div class="header">
+                                <h4 class="title">Class Performance</h4> 
+                                 <hr> 
+                            </div>
+
+                            <div class="content">
+                                <div id="Donut"></div>
+                                 <div class="footer">
+                                    <div class="legend">
+                                         <!-- Add legend for the subjects -->
+                                    </div> 
+                                 </div>
+                            </div>
+                        </div>
+                        <div class="card">
+                            <div class="header">
+                                 
+                                    <h4 class="title">Subject Wise Statistics</h4>
+                                    <hr>
+
+                            </div>
+                            <div id="subject"></div>
+                            <div class="footer">
+                                    <div class="legend">
+                                         <!-- Add legend for the subjects -->
+                                    </div> 
+                            </div>
+                        </div>
+                    </div> 
+                 </div>
+    </div>
+</div>
+
+
+</body>
+
+    <!--   Core JS Files   -->
+    <script src="assets/js/jquery-1.10.2.js" type="text/javascript"></script>
+    <script src="assets/js/bootstrap.min.js" type="text/javascript"></script>
+
+    <!-- Light Bootstrap Table Core javascript and methods for Demo purpose -->
+    <script src="assets/js/light-bootstrap-dashboard.js"></script>
+
+    <script src="http://d3js.org/d3.v3.min.js"></script>
+    <script type="text/javascript">
+         
+         var Data; 
+            var studentIds = [];
+            var correct = [];
+            var timeSpent = [];
+            var TotalCorrAttempts = 0;
+            var TotalIncorrAttempts = 0;
+          
+            var MSI = 0;
+            var MMEN = 0;
+            var MAlg = 0;
+            var MSET = 0;
+            var MRAP = 0;
+            var MNS = 0;
+            var MFRA = 0; 
+    
+                d3.csv("data.csv", function(data) {
+            
+                var set = new Set();
+                for(var i=0;i<data.length;i++) {
+                    set.add(data[i].StudentID);
+                }
+                console.log(set);
+                for (var i = 0; i < data.length; i++) {
+                    if(studentIds[data[i].StudentID]) {
+                        studentIds[data[i].StudentID]++;
+                    } else {
+                        studentIds[data[i].StudentID] = 1;
+                    }
+
+                }
+
+
+                for (var i = 0; i < data.length; i++) {
+                    if(correct[data[i].StudentID]) {
+                        if(data[i].Correct == "TRUE")
+                            correct[data[i].StudentID]++;
+                    } else {
+                        correct[data[i].StudentID] = 1;
+                    }
+
+                }
+
+
+               
+                for (value of set) {
+                   TotalCorrAttempts += correct[value];
+                }
+
+                TotalIncorrAttempts = data.length - TotalCorrAttempts;
+                for (var i = 0; i < data.length; i++) {
+                    if(timeSpent[data[i].StudentID]) {
+                        var temp = parseInt(data[i].TimeTaken);
+                        timeSpent[data[i].StudentID] = timeSpent[data[i].StudentID] + temp;
+                    } else {
+                        var temp = parseInt(data[i].TimeTaken);
+                        timeSpent[data[i].StudentID] = temp;
+                    }
+
+                }
+
+                
+                var x = parseInt(TotalCorrAttempts);
+                d3.select("#TotalAttempts").text(data.length);
+                d3.select("#CorrectAttempts").text(x);
+                d3.select("#IncorrectAttempts").text(TotalIncorrAttempts);
+
+                var dataset = {
+                  data: [TotalCorrAttempts, TotalIncorrAttempts],
+                };
+
+                
+                d3.select("#totalStrength").text(set.size);// strength of the class
+                /**********************************************************************/
+                /*Generates a Donut with total correct attempts and Incorrect attempts*/
+                var width = 630,
+                    height = 300,
+                    radius = Math.min(width, height) / 2;
+
+                var color = d3.scale.ordinal().range(["#65C400" , "#f44336 "]);
+
+                var pie = d3.layout.pie()
+                    .sort(null);
+
+                var arc = d3.svg.arc()
+                    .innerRadius(radius - 100)
+                    .outerRadius(radius - 50);
+
+                var svg = d3.select("#Donut").append("svg")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .append("g")
+                    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+                var path = svg.selectAll("path")
+                    .data(pie(dataset.data))
+                  .enter().append("path")
+                    .attr("fill", function(d, i) { return color(i); })
+                    .attr("d", arc).append("text")
+                    .text("Performance"); 
+
+                /****************************************************************************/
+                
+                var TotalTime=0;
+                for (value of set) {
+                    TotalTime=TotalTime+timeSpent[value];
+                }
+                d3.select("#Time").text(Math.round(TotalTime/3600));//send total time to the div
+                
+                for(var i=0;i<data.length;i++){
+                    var str = data[i].AssessmentItemID;
+                    if(str.startsWith('MSI')) {
+                        MSI++;
+                    }
+                    else if(str.startsWith('MAlg')) {
+                        MAlg++;
+                    }
+                    else if(str.startsWith('MMEN')) {
+                        MMEN++;
+                    }else if(str.startsWith('MFRA')){
+                        MFRA++;
+                    }
+                    else if(str.startsWith('MRAP')) {
+                        MRAP++;
+                    }
+                    else if(str.startsWith('MSET')){
+                        MSET++;
+                    }
+
+                }
+                console.log(MSI);
+                console.log(MRAP);
+                console.log(MSET);
+                console.log(MFRA);
+                console.log(MAlg);
+                console.log(MMEN);
+                
+                 var subs = {
+                  subscount: [MSI, MRAP, MSET,MFRA, MMEN, MAlg ],
+                };
+
+                var width = 630,
+                    height = 300,
+                    radius = Math.min(width, height) / 2;
+
+                var color = d3.scale.category20();
+
+                var pie = d3.layout.pie()
+                    .sort(null);
+
+                var arc = d3.svg.arc()
+                    .innerRadius(radius - 100)
+                    .outerRadius(radius - 50);
+
+                var svg = d3.select("#subject").append("svg")
+                    .attr("width", width)
+                    .attr("height", height)
+                    .append("g")
+                    .attr("transform", "translate(" + width / 2 + "," + height / 2 + ")");
+
+                var path = svg.selectAll("path")
+                    .data(pie(subs.subscount))
+                  .enter().append("path")
+                    .attr("fill", function(d, i) { return color(i); })
+                    .attr("d", arc);
+
+
+                });
+    </script>
+
+</html>
